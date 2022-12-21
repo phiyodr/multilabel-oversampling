@@ -23,7 +23,7 @@ from multilabel_oversampling import multilabel_oversampling as mo
 
 df = mo.create_fake_data(size=1, seed=3)
 ml_oversampler = mo.MultilabelOversampler(number_of_adds=100, number_of_tries=100)
-df_new = ml_oversampler.fit(df)
+df_new, plot_at = ml_oversampler.fit(df)
 #> Iteration:  20%|██████                        | 20/100 [00:00<00:00, 111.68it/s]
 #> No improvement after 100 tries in iter 20.
 ```

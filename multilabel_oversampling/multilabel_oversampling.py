@@ -99,8 +99,10 @@ class MultilabelOversampler:
         self.res_std = res_std
         self.res_bad = res_bad
         if (len(res_std) > 0) and self.plot:
-            self.plot_all_tries(self.res_std, self.res_bad)
+            plot_at = self.plot_all_tries(self.res_std, self.res_bad)
+            plt.title("All tries per iteration with \n corresponding standard deviation")
             plt.show()
+            return df_new, plot_at
         return df_new
     
     def reset(self):
@@ -122,6 +124,7 @@ class MultilabelOversampler:
                 plt.scatter(i + idx*0.01, s)
         plt.xlabel('Iters')#, fontsize=18)
         plt.ylabel('Std')#, fontsize=16)
+        return plt
 
     def plot_results(self):
         plt.subplot(2,2,1)
@@ -132,7 +135,8 @@ class MultilabelOversampler:
         self.plot_index_counts(self.df_new)
         plt.tight_layout()
         plt.show()
-    
+        return plt
+
     def plot_distr(self, df, when):
         df[self.target_list].sum().plot.bar()
         plt.title(f"Label distribution \n{when} upsampling")
@@ -151,6 +155,6 @@ class MultilabelOversampler:
 if __name__ == '__main__':
     df = create_fake_data(size=1, seed=3)
     print(df)
-    mlo = MultilabelOversampling(number_of_adds=100)
+    mlo = MultilabelOversampler(number_of_adds=100)
     df_new = mlo.fit(df)
     mlo.plot_results()
