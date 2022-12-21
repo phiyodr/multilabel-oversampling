@@ -30,13 +30,14 @@ def create_fake_data(size=1, seed=1):
 
 class MultilabelOversampler:
     
-    def __init__(self, number_of_adds=1000, number_of_tries=100, tqdm_disable=False, details=False, plot=True):
+    def __init__(self, number_of_adds=1000, number_of_tries=100, seed=1, tqdm_disable=False, details=False, plot=True):
         """
 
         
         Args:
             number_of_add: Maximum number of new rows add to df. Total number of iterations.
             number_of_tries: Maximum number of draws from df within total number of iterations.
+            seed: Seed for row sampling in `fit` function
             tqdm_disable: Enable progress bar for each iteration.
             details: Enable detailed feedback for each try
             plot: Plot all tries (iteration vs. std) after process is finished.
@@ -50,9 +51,11 @@ class MultilabelOversampler:
         else:
             self.number_of_tries = 1e6
 
+        self.seed = seed
         self.tqdm_disable = tqdm_disable
         self.details = details
         self.plot = plot
+        
             
 
     def fit(self, df, target_list=["y1", "y2", "y3", "y4"]):
@@ -76,7 +79,7 @@ class MultilabelOversampler:
             # Take random row and add to df_new
             not_working = []
             for try_ in tqdm(range(self.number_of_tries), desc=f"Iter {iter_}", disable=True):
-                random_row = df.sample(n = 1)
+                random_row = df.sample(n = 1, random_state=self.seed)
                 df_interim = pd.concat((df_new, random_row))
                 new_std = df_interim[self.target_list].sum().std()
                 # If std improves add row, otherwise add to not_working list
