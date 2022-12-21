@@ -35,6 +35,81 @@ ml_oversampler.plot_results()
 
 ![Plot from ml_oversampler.plot_results()](assets/plot_results.png)
 
+```python
+#import seaborn as sns
+#df.style.background_gradient(cmap=sns.color_palette("Spectral", as_cmap=True))
+
+# Original DataFrame
+print(df)
+#>     y1  y2  y3  y4           x
+#> 0    1   1   0   0   img_0.jpg
+#> 1    1   1   1   0   img_1.jpg
+#> 2    1   1   1   0   img_2.jpg
+#> 3    1   1   0   0   img_3.jpg
+#> 4    1   1   0   0   img_4.jpg
+#> 5    1   1   0   1   img_5.jpg
+#> 6    1   1   0   0   img_6.jpg
+#> 7    1   1   0   0   img_7.jpg
+#> 8    1   1   0   0   img_8.jpg
+#> 9    1   1   0   0   img_9.jpg
+#> 10   1   1   0   0  img_10.jpg
+#> 11   1   1   0   0  img_11.jpg
+#> 12   1   0   0   1  img_12.jpg
+#> 13   1   0   0   1  img_13.jpg
+#> 14   1   0   0   0  img_14.jpg
+#> 15   1   0   0   0  img_15.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 18   0   0   1   0  img_18.jpg
+#> 19   0   0   0   0  img_19.jpg
+
+# New DataFrame after upsampling
+print(df_new)
+#>     y1  y2  y3  y4           x
+#> 0    1   1   0   0   img_0.jpg
+#> 1    1   1   1   0   img_1.jpg
+#> 2    1   1   1   0   img_2.jpg
+#> 3    1   1   0   0   img_3.jpg
+#> 4    1   1   0   0   img_4.jpg
+#> 5    1   1   0   1   img_5.jpg
+#> 6    1   1   0   0   img_6.jpg
+#> 7    1   1   0   0   img_7.jpg
+#> 8    1   1   0   0   img_8.jpg
+#> 9    1   1   0   0   img_9.jpg
+#> 10   1   1   0   0  img_10.jpg
+#> 11   1   1   0   0  img_11.jpg
+#> 12   1   0   0   1  img_12.jpg
+#> 13   1   0   0   1  img_13.jpg
+#> 14   1   0   0   0  img_14.jpg
+#> 15   1   0   0   0  img_15.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 18   0   0   1   0  img_18.jpg
+#> 19   0   0   0   0  img_19.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 18   0   0   1   0  img_18.jpg
+#> 13   1   0   0   1  img_13.jpg
+#> 18   0   0   1   0  img_18.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 16   0   0   1   0  img_16.jpg
+#> 17   0   0   0   1  img_17.jpg
+#> 17   0   0   0   1  img_17.jpg
+
+```
+
+
 ## :information_source: Install
 
 * Install from GitHub
