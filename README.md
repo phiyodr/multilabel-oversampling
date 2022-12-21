@@ -1,7 +1,7 @@
 # Multilabel Oversampling
 
 **Many algorithms for imbalanced data support binary and multiclass classification only.**
-**This approach is made for mulit-label classification (aka multi-target classification).**
+**This approach is made for multi-label classification (aka multi-target classification).**
 
 
 
@@ -14,7 +14,7 @@
 	* If new std reduces, add sample to your dataset
 	* If not, draw another sample (to this up to `number_of_tries` times)
 * A new df is returned. 
-* A result plot viszualize the target distribition before and after upsampling. Moreover the counts per index are shown. 
+* A result plot visualizes the target distribution before and after upsampling. Moreover the counts per index are shown.
 
 ## :arrow_right: Usage
 
