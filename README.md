@@ -118,4 +118,9 @@ print(df_new)
 pip install git+https://github.com/phiyodr/multilabel-oversampling
 ```
 
+
+## :construction_worker:
+
+* [] Implement weighted sampling (so that samples which are already often in the new df are less often sampled)
+
 :sunflower:

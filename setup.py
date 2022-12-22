@@ -10,7 +10,7 @@ with open("requirements.txt") as file:
     
 setuptools.setup(
     name="multilabel-oversampling",
-    version="0.1.0",
+    version="0.1.1",
     author="Philipp J. Rösch",
     author_email="phiyodr@gmail.com",
     description="Multilabel Oversampling",
