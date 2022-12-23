@@ -6,7 +6,7 @@ import seaborn as sns
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import random
-import os
+import collections
 import math
 
 
@@ -137,14 +137,13 @@ class MultilabelOversampler:
         """Plot target distribution before and after upsampling.
         Also plot the counts of each index-id.
         """
-        plt.subplot(2,2,1)
+        plt.subplot(1,3,1)
         self.plot_distr(self.df, "before")
-        plt.subplot(2,2,2)
+        plt.subplot(1,3,2)
         self.plot_distr(self.df_new, "after")
-        plt.subplot(2,2,(3,4)) # MatplotlibDeprecationWarning
+        plt.subplot(1,3,3) # MatplotlibDeprecationWarning
         self.plot_index_counts(self.df_new)
         plt.tight_layout()
-        plt.show()
         return plt
 
     def plot_distr(self, df, when):
@@ -153,10 +152,12 @@ class MultilabelOversampler:
         plt.title(f"Label distribution \n{when} upsampling")
         return plt
     
-    def plot_index_counts(self, df_new):
+    def plot_individual_index_counts(self, df_new):
         """Plot upsampling counts for each index. 
 
         TODO make better xticks alignment"""
+        if df_new == None:
+            df_new == self.df_new
         idxs = list(df_new.index)
         lens = len(set(idxs))
         plt.hist(idxs, bins=lens,  width=.1)#, edgecolor='k')
@@ -164,6 +165,18 @@ class MultilabelOversampler:
         plt.xticks(xint)
         plt.title("Draws per index\n in new df")
         return plt
+
+
+    def plot_index_counts(self, df_new=None):
+        if df_new is None:
+            df_new = self.df_new
+        x = list(collections.Counter(list(df_new.index)).values())
+        plt.hist(x, bins=max(x)+1, rwidth=.9)
+        plt.title("Frequency of indexes in df")
+        plt.xlabel('Frequency in dataset')
+        plt.ylabel('Counts')
+        return plt
+
  
 if __name__ == '__main__':
     seed_everything(seed=42)
