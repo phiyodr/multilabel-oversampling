@@ -131,6 +131,7 @@ class MultilabelOversampler:
                 plt.scatter(i + idx*0.01, s)
         plt.xlabel('Iters')#, fontsize=18)
         plt.ylabel('Std')#, fontsize=16)
+        plt.title("All standard deviations per iteration")
         return plt
 
     def plot_results(self):
@@ -172,8 +173,8 @@ class MultilabelOversampler:
             df_new = self.df_new
         x = list(collections.Counter(list(df_new.index)).values())
         plt.hist(x, bins=max(x)+1, rwidth=.9)
-        plt.title("Frequency of indexes in df")
-        plt.xlabel('Frequency in dataset')
+        plt.title("Frequency of\nindexes in df")
+        plt.xlabel('Occurances of indexes in dataset')
         plt.ylabel('Counts')
         return plt
 

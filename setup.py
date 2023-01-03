@@ -18,6 +18,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/phiyodr/multilabel-oversampling",
     classifiers=[
+    	"Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Programming Language :: Python :: 3",
     ],
     packages=setuptools.find_packages(),
