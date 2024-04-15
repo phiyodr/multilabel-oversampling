@@ -112,18 +112,11 @@ print(df_new)
 
 ## :information_source: Install
 
-* Install from GitHub
+* Install from GitHub (you may need to install dependencies from `requirements.txt` first)
 
 ```bash
 pip install git+https://github.com/phiyodr/multilabel-oversampling
 ```
-
-* Install from PyPI
-
-```bash
-pip install multilabel-oversampling
-```
-
 
 
 ## :construction_worker: Future work
