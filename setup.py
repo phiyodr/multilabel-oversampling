@@ -1,6 +1,4 @@
 import setuptools
-from multilabel_oversampling import __version__
-print(__version__)
 
 with open("README.md", "r") as file:
     long_description = file.read()
@@ -10,7 +8,7 @@ with open("requirements.txt") as file:
     
 setuptools.setup(
     name="multilabel-oversampling",
-    version=__version__, 
+    version="0.1.3", 
     author="Philipp J. Rösch",
     author_email="phiyodr@gmail.com",
     description="Multilabel Oversampling",
